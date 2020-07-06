@@ -1,0 +1,26 @@
+{
+  "memorytripApp": {
+    "travelTrip": {
+      "home": {
+        "title": "Travel Trips",
+        "createLabel": "Create a new Travel Trip",
+        "createOrEditLabel": "Create or edit a Travel Trip",
+        "notFound": "No Travel Trips found"
+      },
+      "created": "A new Travel Trip is created with identifier {{ param }}",
+      "updated": "A Travel Trip is updated with identifier {{ param }}",
+      "deleted": "A Travel Trip is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Travel Trip {{ id }}?"
+      },
+      "detail": {
+        "title": "Travel Trip"
+      },
+      "title": "Title",
+      "description": "Description",
+      "travelImage": "Travel Image",
+      "user": "User",
+      "timelines": "Timelines"
+    }
+  }
+}

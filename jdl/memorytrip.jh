@@ -1,0 +1,59 @@
+entity TravelTrip {
+	title String,
+    description String
+}
+
+entity Timeline {
+	title String,
+    description String,
+    startTime Instant,
+    endTime Instant,
+    order Integer,
+}
+
+entity Location {
+	locationAddress String,
+    lat Double,
+    lng Double,
+}
+
+entity User {}
+
+enum FileType {
+    PHOTO, VIDEO, OTHER
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity File {
+	name String,
+	path String,
+	originName String,
+	type FileType,
+}
+
+relationship OneToOne {
+	Timeline{location} to Location,
+    TravelTrip{travelImage} to File,
+}
+
+relationship OneToMany {
+	Timeline{files} to File
+}
+
+relationship ManyToOne {
+	TravelTrip{user} to User,
+    Timeline to TravelTrip{Timelines},
+}
+
+// Set pagination options
+paginate TravelTrip, Timeline, File with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

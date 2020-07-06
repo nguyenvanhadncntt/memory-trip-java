@@ -1,0 +1,10 @@
+{
+  "memorytripApp": {
+    "FileType": {
+      "null": "",
+      "PHOTO": "PHOTO",
+      "VIDEO": "VIDEO",
+      "OTHER": "OTHER"
+    }
+  }
+}

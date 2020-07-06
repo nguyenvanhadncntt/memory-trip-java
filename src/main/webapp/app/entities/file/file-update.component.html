@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-file-heading" jhiTranslate="memorytripApp.file.home.createOrEditLabel">Create or edit a File</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="memorytripApp.file.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="memorytripApp.file.path" for="field_path">Path</label>
+                    <input type="text" class="form-control" name="path" id="field_path"
+                           formControlName="path"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="memorytripApp.file.originName" for="field_originName">Origin Name</label>
+                    <input type="text" class="form-control" name="originName" id="field_originName"
+                           formControlName="originName"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="memorytripApp.file.type" for="field_type">Type</label>
+                    <select class="form-control" name="type" formControlName="type" id="field_type">
+                        <option value="PHOTO">{{ 'memorytripApp.FileType.PHOTO' | translate }}</option>
+                        <option value="VIDEO">{{ 'memorytripApp.FileType.VIDEO' | translate }}</option>
+                        <option value="OTHER">{{ 'memorytripApp.FileType.OTHER' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="memorytripApp.file.timeline" for="field_timeline">Timeline</label>
+                    <select class="form-control" id="field_timeline" name="timeline" formControlName="timelineId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="timelineOption.id" *ngFor="let timelineOption of timelines; trackBy: trackById">{{ timelineOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

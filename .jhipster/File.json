@@ -1,0 +1,43 @@
+{
+  "name": "File",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "path",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "originName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "FileType",
+      "fieldValues": "PHOTO,VIDEO,OTHER"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "timeline",
+      "otherEntityRelationshipName": "files",
+      "relationshipName": "timeline",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200706074510",
+  "javadoc": "not an ignored comment",
+  "entityTableName": "file",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

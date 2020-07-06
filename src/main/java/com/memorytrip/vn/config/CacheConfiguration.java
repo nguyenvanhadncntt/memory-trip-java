@@ -48,6 +48,12 @@ public class CacheConfiguration {
             createCache(cm, com.memorytrip.vn.domain.User.class.getName());
             createCache(cm, com.memorytrip.vn.domain.Authority.class.getName());
             createCache(cm, com.memorytrip.vn.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.memorytrip.vn.domain.TravelTrip.class.getName());
+            createCache(cm, com.memorytrip.vn.domain.TravelTrip.class.getName() + ".timelines");
+            createCache(cm, com.memorytrip.vn.domain.Timeline.class.getName());
+            createCache(cm, com.memorytrip.vn.domain.Timeline.class.getName() + ".files");
+            createCache(cm, com.memorytrip.vn.domain.Location.class.getName());
+            createCache(cm, com.memorytrip.vn.domain.File.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

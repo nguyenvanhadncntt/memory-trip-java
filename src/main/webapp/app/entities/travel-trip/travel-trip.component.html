@@ -1,0 +1,83 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="memorytripApp.travelTrip.home.title">Travel Trips</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-travel-trip" [routerLink]="['/travel-trip/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="memorytripApp.travelTrip.home.createLabel">
+            Create a new Travel Trip
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="travelTrips?.length === 0">
+        <span jhiTranslate="memorytripApp.travelTrip.home.notFound">No travelTrips found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="travelTrips && travelTrips.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="title"><span jhiTranslate="memorytripApp.travelTrip.title">Title</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="description"><span jhiTranslate="memorytripApp.travelTrip.description">Description</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="travelImageId"><span jhiTranslate="memorytripApp.travelTrip.travelImage">Travel Image</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="userId"><span jhiTranslate="memorytripApp.travelTrip.user">User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let travelTrip of travelTrips ;trackBy: trackId">
+                    <td><a [routerLink]="['/travel-trip', travelTrip.id, 'view']">{{ travelTrip.id }}</a></td>
+                    <td>{{ travelTrip.title }}</td>
+                    <td>{{ travelTrip.description }}</td>
+                    <td>
+                        <div *ngIf="travelTrip.travelImageId">
+                            <a [routerLink]="['/file', travelTrip.travelImageId , 'view']" >{{ travelTrip.travelImageId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        {{ travelTrip.userId }}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/travel-trip', travelTrip.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/travel-trip', travelTrip.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(travelTrip)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="travelTrips && travelTrips.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

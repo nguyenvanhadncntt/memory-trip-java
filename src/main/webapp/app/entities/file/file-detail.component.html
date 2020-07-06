@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="file">
+            <h2><span jhiTranslate="memorytripApp.file.detail.title">File</span> {{ file.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="memorytripApp.file.name">Name</span></dt>
+                <dd>
+                    <span>{{ file.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="memorytripApp.file.path">Path</span></dt>
+                <dd>
+                    <span>{{ file.path }}</span>
+                </dd>
+                <dt><span jhiTranslate="memorytripApp.file.originName">Origin Name</span></dt>
+                <dd>
+                    <span>{{ file.originName }}</span>
+                </dd>
+                <dt><span jhiTranslate="memorytripApp.file.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'memorytripApp.FileType.' + file.type }}">{{ file.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="memorytripApp.file.timeline">Timeline</span></dt>
+                <dd>
+                    <div *ngIf="file.timelineId">
+                        <a [routerLink]="['/timeline', file.timelineId, 'view']">{{ file.timelineId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/file', file.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

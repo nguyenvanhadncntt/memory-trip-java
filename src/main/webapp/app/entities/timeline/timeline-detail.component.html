@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="timeline">
+            <h2><span jhiTranslate="memorytripApp.timeline.detail.title">Timeline</span> {{ timeline.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="memorytripApp.timeline.title">Title</span></dt>
+                <dd>
+                    <span>{{ timeline.title }}</span>
+                </dd>
+                <dt><span jhiTranslate="memorytripApp.timeline.description">Description</span></dt>
+                <dd>
+                    <span>{{ timeline.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="memorytripApp.timeline.startTime">Start Time</span></dt>
+                <dd>
+                    <span>{{ timeline.startTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="memorytripApp.timeline.endTime">End Time</span></dt>
+                <dd>
+                    <span>{{ timeline.endTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="memorytripApp.timeline.order">Order</span></dt>
+                <dd>
+                    <span>{{ timeline.order }}</span>
+                </dd>
+                <dt><span jhiTranslate="memorytripApp.timeline.location">Location</span></dt>
+                <dd>
+                    <div *ngIf="timeline.locationId">
+                        <a [routerLink]="['/location', timeline.locationId, 'view']">{{ timeline.locationId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="memorytripApp.timeline.travelTrip">Travel Trip</span></dt>
+                <dd>
+                    <div *ngIf="timeline.travelTripId">
+                        <a [routerLink]="['/travel-trip', timeline.travelTripId, 'view']">{{ timeline.travelTripId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/timeline', timeline.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

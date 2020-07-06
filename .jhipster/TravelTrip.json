@@ -1,0 +1,47 @@
+{
+  "name": "TravelTrip",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "file",
+      "otherEntityRelationshipName": "travelTrip",
+      "relationshipName": "travelImage",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "travelTrip",
+      "relationshipName": "user",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "timeline",
+      "otherEntityRelationshipName": "travelTrip",
+      "relationshipName": "timelines"
+    }
+  ],
+  "changelogDate": "20200706074110",
+  "entityTableName": "travel_trip",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

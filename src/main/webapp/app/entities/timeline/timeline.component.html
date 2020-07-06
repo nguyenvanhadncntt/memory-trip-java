@@ -1,0 +1,91 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="memorytripApp.timeline.home.title">Timelines</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-timeline" [routerLink]="['/timeline/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="memorytripApp.timeline.home.createLabel">
+            Create a new Timeline
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="timelines?.length === 0">
+        <span jhiTranslate="memorytripApp.timeline.home.notFound">No timelines found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="timelines && timelines.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="title"><span jhiTranslate="memorytripApp.timeline.title">Title</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="description"><span jhiTranslate="memorytripApp.timeline.description">Description</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="startTime"><span jhiTranslate="memorytripApp.timeline.startTime">Start Time</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="endTime"><span jhiTranslate="memorytripApp.timeline.endTime">End Time</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="order"><span jhiTranslate="memorytripApp.timeline.order">Order</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="locationId"><span jhiTranslate="memorytripApp.timeline.location">Location</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="travelTripId"><span jhiTranslate="memorytripApp.timeline.travelTrip">Travel Trip</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let timeline of timelines ;trackBy: trackId">
+                    <td><a [routerLink]="['/timeline', timeline.id, 'view']">{{ timeline.id }}</a></td>
+                    <td>{{ timeline.title }}</td>
+                    <td>{{ timeline.description }}</td>
+                    <td>{{ timeline.startTime | date:'medium' }}</td>
+                    <td>{{ timeline.endTime | date:'medium' }}</td>
+                    <td>{{ timeline.order }}</td>
+                    <td>
+                        <div *ngIf="timeline.locationId">
+                            <a [routerLink]="['/location', timeline.locationId , 'view']" >{{ timeline.locationId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="timeline.travelTripId">
+                            <a [routerLink]="['/travel-trip', timeline.travelTripId , 'view']" >{{ timeline.travelTripId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/timeline', timeline.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/timeline', timeline.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(timeline)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="timelines && timelines.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>
