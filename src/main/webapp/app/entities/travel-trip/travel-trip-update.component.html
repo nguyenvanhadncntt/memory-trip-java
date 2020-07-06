@@ -1,54 +1,6 @@
 <div class="row justify-content-center">
     <div class="col-8">
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-travel-trip-heading" jhiTranslate="memorytripApp.travelTrip.home.createOrEditLabel">Create or edit a Travel Trip</h2>
-
-            <div>
-                <jhi-alert-error></jhi-alert-error>
-
-                <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="memorytripApp.travelTrip.title" for="field_title">Title</label>
-                    <input type="text" class="form-control" name="title" id="field_title"
-                           formControlName="title"/>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="memorytripApp.travelTrip.description" for="field_description">Description</label>
-                    <input type="text" class="form-control" name="description" id="field_description"
-                           formControlName="description"/>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="memorytripApp.travelTrip.travelImage" for="field_travelImage">Travel Image</label>
-                    <select class="form-control" id="field_travelImage" name="travelImage" formControlName="travelImageId">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="fileOption.id" *ngFor="let fileOption of travelimages; trackBy: trackById">{{ fileOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="memorytripApp.travelTrip.user" for="field_user">User</label>
-                    <select class="form-control" id="field_user" name="user" formControlName="userId">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.id }}</option>
-                    </select>
-                </div>
-            </div>
-
-            <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
-                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-                </button>
-
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-                </button>
-            </div>
-        </form>
+        <h2 id="jhi-travel-trip-heading" jhiTranslate="memorytripApp.travelTrip.home.createOrEditLabel">Create or edit a Travel Trip</h2>
+        <jhi-travel-trip-info></jhi-travel-trip-info>
     </div>
 </div>
