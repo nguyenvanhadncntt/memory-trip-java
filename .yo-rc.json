@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.memorytrip.vn",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.10.0",
+    "applicationType": "monolith",
+    "baseName": "memorytrip",
+    "packageName": "com.memorytrip.vn",
+    "packageFolder": "com/memorytrip/vn",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "N2U5ODhhZTg2ODEwM2NjZWZjYTk2ZWQ0N2VmYWMwZGFjMWI4NzBiNmMwNDBjYzU0YTM3YmFlMTU5Y2FhOTNiYjE1Njc1OGM3N2Y5ZDExMjc4YWEzZDgxMTY3YTY4ZTEyNDhmOWM1MGM5NGQ0OTAzNjc2NDNmYWI3OTQ4MGJhZDE=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1594018249403,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en"],
+    "blueprints": []
+  }
+}
