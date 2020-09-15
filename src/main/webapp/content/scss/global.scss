@@ -192,4 +192,30 @@ ui bootstrap tweaks
   white-space: nowrap;
 }
 
+.upload-btn {
+  background-color: #f1960f;
+  color: white;
+}
+
+body {
+  font-family: Arial !important;
+  font-size: 13px !important;
+  color: #333 !important;
+  font-weight: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+button,
+input,
+select {
+  font-family: Arial !important;
+  font-size: 13px !important;
+}
+
+a {
+  font-family: Arial !important;
+  font-size: 13px;
+}
+
 /* jhipster-needle-scss-add-main JHipster will add new css style */
